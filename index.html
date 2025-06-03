@@ -4,13 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ColdWheels - Página Inicial</title>
-    <link rel="stylesheet" href="estilos/estilos.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="estilos/estilos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
   </head>
   <body>
     <header>
       <nav class="menu_lateral" id="sidebar">
-        <div class="menu_expansive" id="menuBtn"><i class="bi bi-list"></i></div>
+        <div class="menu_expansive" id="menuBtn">
+          <i class="bi bi-list"></i>
+        </div>
 
         <ul>
           <li class="item_menu">
@@ -44,44 +49,65 @@
     <main>
       <h1>C O L D W H E E L S</h1>
       <section id="section1">
-        <img id="img_principal" src="./imagens/Imagem do WhatsApp de 2025-06-02 à(s) 00.46.51_d625143e.jpg" alt="Imagem do carrinho">
-        <div><h3>Motivação</h3>
-        <p>
-          Foi um desafio para a equipe, que não tinha conhecimento prévio de
-          Arduino e Bluetooth.
-        </p>
+        <div class="carrinho-card">
+          <div class="carrinho-img-container">
+            <img
+              src="./imagens/Imagem do WhatsApp de 2025-06-02 à(s) 00.46.51_d625143e.jpg"
+              alt="Imagem do carrinho"
+              class="carrinho-img"
+            />
+          </div>
+          <div class="carrinho-info">
+            <h3>Nosso Carrinho</h3>
+            <p>Projeto desenvolvido com Arduino e controle via Bluetooth</p>
+          </div>
+        </div>
 
-        <h3>Objetivo</h3>
-        <p>
-          Montar um carrinho capaz de andar para frente, para trás e fazer
-          curvas através do aplicativo RC Bluetooth Controller.
-        </p>
-      </div>
+        <div class="texto-motivacao">
+          <h3>Motivação</h3>
+          <p>
+            Foi um desafio para a equipe, que não tinha conhecimento prévio de
+            Arduino e Bluetooth.
+          </p>
+
+          <h3>Objetivo</h3>
+          <p>
+            Montar um carrinho capaz de andar para frente, para trás e fazer
+            curvas através do aplicativo RC Bluetooth Controller.
+          </p>
+        </div>
       </section>
-      
 
       <section id="section2">
         <h2>Links Rápidos</h2>
         <ul>
-          <a href="montagem.html"><li>
-            <i class="bi bi-gear"></i>
-            Guia de Montagem
-          </li></a>
-          <a href="codigo.html"><li>
-            <i class="bi bi-code-slash"></i>
-            Código Fonte
-          </li></a>
+          <a href="montagem.html"
+            ><li>
+              <i class="bi bi-gear"></i>
+              Guia de Montagem
+            </li></a
+          >
+          <a href="codigo.html"
+            ><li>
+              <i class="bi bi-code-slash"></i>
+              Código Fonte
+            </li></a
+          >
           <a href="equipe.html">
             <li>
-            <i class="bi bi-people"></i>
-            Nossa Equipe
-          </li></a>
+              <i class="bi bi-people"></i>
+              Nossa Equipe
+            </li></a
+          >
         </ul>
       </section>
     </main>
 
     <footer>
-      <p>Projeto ColdWheels - Disciplinas de Sistemas Digitais e Introdução à Computação</p>
+      <p>
+        Projeto ColdWheels - Disciplinas de Sistemas Digitais e Introdução à
+        Computação
+      </p>
     </footer>
 
     <!-- 🔽 JS AO FINAL DO BODY -->
