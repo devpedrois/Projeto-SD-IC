@@ -214,3 +214,23 @@ main > #div2 > #desafios > p{
 main > #div2 > #desafios > h3{
     margin: 5px 0 5px 0;
 }
+.guia-titulo{
+    margin-top: 50px;
+    font-size: 50px;
+    font-weight: 500;
+}
+.comp-subtitulo{
+    font-weight: 400;
+}
+
+.montagem-btn{
+    
+    background-color:#1F22ED;
+    border-radius: 5px;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
