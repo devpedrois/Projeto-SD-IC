@@ -221,10 +221,11 @@ main > #div2 > #desafios > h3{
 }
 .comp-subtitulo{
     font-weight: 400;
+    margin-bottom: 15px;
 }
 
 .montagem-btn{
-    
+
     background-color:#1F22ED;
     border-radius: 5px;
     color: #FFFFFF;
@@ -233,4 +234,9 @@ main > #div2 > #desafios > h3{
     margin-top: 20px;
     margin-left: 10px;
     margin-bottom: 20px;
+}
+.montagem-btn:hover{
+    padding: 17px;
+    background-color: #111391;
+    transition: 0.5s;
 }
