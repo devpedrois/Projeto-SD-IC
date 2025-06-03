@@ -4,25 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ColdWheels - Página Inicial</title>
+    <link rel="stylesheet" href="./estilos/estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   </head>
   <body>
     <header>
-      <h1>ColdWheels</h1>
-      <p>Carrinho controlado via Bluetooth</p>
-      <nav>
+      <nav class="menu_lateral" id="sidebar">
+        <div class="menu_expansive" id="menuBtn"><i class="bi bi-list"></i></div>
+
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="montagem.html">Montagem</a></li>
-          <li><a href="codigo.html">Código</a></li>
-          <li><a href="equipe.html">Equipe</a></li>
+          <li class="item_menu">
+            <a href="index.html">
+              <span class="icon"><i class="bi bi-house"></i></span>
+              <span class="txt_menu">Home</span>
+            </a>
+          </li>
+          <li class="item_menu">
+            <a href="montagem.html">
+              <span class="icon"><i class="bi bi-car-front"></i></span>
+              <span class="txt_menu">Montagem</span>
+            </a>
+          </li>
+          <li class="item_menu">
+            <a href="codigo.html">
+              <span class="icon"><i class="bi bi-folder"></i></span>
+              <span class="txt_menu">Código</span>
+            </a>
+          </li>
+          <li class="item_menu">
+            <a href="equipe.html">
+              <span class="icon"><i class="bi bi-people"></i></span>
+              <span class="txt_menu">Grupo</span>
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <section>
-        <h2>Sobre o Projeto</h2>
-        <h3>Motivação</h3>
+      <h1>C O L D W H E E L S</h1>
+      <section id="section1">
+        <img id="img_principal" src="./imagens/Imagem do WhatsApp de 2025-06-02 à(s) 00.46.51_d625143e.jpg" alt="Imagem do carrinho">
+        <div><h3>Motivação</h3>
         <p>
           Foi um desafio para a equipe, que não tinha conhecimento prévio de
           Arduino e Bluetooth.
@@ -33,26 +56,42 @@
           Montar um carrinho capaz de andar para frente, para trás e fazer
           curvas através do aplicativo RC Bluetooth Controller.
         </p>
-
-        <h3>Esquema Conceitual</h3>
-        <img src="images/esquema.jpg" alt="Esquema do projeto" width="500" />
+      </div>
       </section>
+      
 
-      <section>
+      <section id="section2">
         <h2>Links Rápidos</h2>
         <ul>
-          <li><a href="montagem.html">Guia de Montagem</a></li>
-          <li><a href="codigo.html">Código Fonte</a></li>
-          <li><a href="equipe.html">Nossa Equipe</a></li>
+          <a href="montagem.html"><li>
+            <i class="bi bi-gear"></i>
+            Guia de Montagem
+          </li></a>
+          <a href="codigo.html"><li>
+            <i class="bi bi-code-slash"></i>
+            Código Fonte
+          </li></a>
+          <a href="equipe.html">
+            <li>
+            <i class="bi bi-people"></i>
+            Nossa Equipe
+          </li></a>
         </ul>
       </section>
     </main>
 
     <footer>
-      <p>
-        Projeto ColdWheels - Disciplinas de Sistemas Digitais e Introdução à
-        Computação
-      </p>
+      <p>Projeto ColdWheels - Disciplinas de Sistemas Digitais e Introdução à Computação</p>
     </footer>
+
+    <!-- 🔽 JS AO FINAL DO BODY -->
+    <script>
+      const menuBtn = document.getElementById("menuBtn");
+      const sidebar = document.getElementById("sidebar");
+
+      menuBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("expandido");
+      });
+    </script>
   </body>
 </html>
