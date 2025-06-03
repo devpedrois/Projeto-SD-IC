@@ -41,6 +41,7 @@ nav.menu_lateral {
   z-index: 1000;
 }
 
+
 nav.menu_lateral.expandido {
   width: 220px;
 }
@@ -90,6 +91,8 @@ ul {
 
 .item_menu {
   transition: 0.3s;
+
+
 }
 
 .item_menu:hover {
@@ -445,6 +448,7 @@ footer {
   }
 
   main > #section1 {
+
     flex-direction: column;
     align-items: center;
   }
