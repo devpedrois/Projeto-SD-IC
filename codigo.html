@@ -1,239 +1,199 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ColdWheels - Código Fonte</title
-  <link rel="stylesheet" href="./estilos/estilos.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-</head>
-<body>
-  <header>
-    <nav class="menu_lateral">
-      <div class="menu_expansive"><i class="bi bi-list"></i></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ColdWheels - Codigo</title>
+    <link rel="stylesheet" href="./estilos/estilos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="menu_lateral" id="sidebar">
+        <div class="menu_expansive" id="menuBtn">
+          <i class="bi bi-list"></i>
+        </div>
 
-      <ul>
-        <li class="item_menu">
-          <a href="index.html">
-            <span class="icon"><i class="bi bi-house"></i></span>
-            <span class="txt_menu">Home</span>
-          </a>
-        </li>
-        <li class="item_menu">
-          <a href="montagem.html">
-            <span class="icon"><i class="bi bi-car-front"></i></span>
-            <span class="txt_menu">Montagem</span>
-          </a>
-        </li>
-        <li class="item_menu">
-          <a href="codigo.html">
-            <span class="icon"><i class="bi bi-folder"></i></span>
-            <span class="txt_menu">Código</span>
-          </a>
-        </li>
-        <li class="item_menu">
-          <a href="equipe.html">
-            <span class="icon"><i class="bi bi-people"></i></span>
-            <span class="txt_menu">Grupo</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  
-  <main>
-    <h1>ColdWheels</h1>
-    <p>Carrinho controlado via Bluetooth</p>
-    
-      <section>
-        <h2>Código Principal</h2>
-        <pre>
-          #include <SoftwareSerial.h>
+        <ul>
+          <li class="item_menu">
+            <a href="index.html">
+              <span class="icon"><i class="bi bi-house"></i></span>
+              <span class="txt_menu">Home</span>
+            </a>
+          </li>
+          <li class="item_menu">
+            <a href="montagem.html">
+              <span class="icon"><i class="bi bi-car-front"></i></span>
+              <span class="txt_menu">Montagem</span>
+            </a>
+          </li>
+          <li class="item_menu">
+            <a href="codigo.html">
+              <span class="icon"><i class="bi bi-folder"></i></span>
+              <span class="txt_menu">Código</span>
+            </a>
+          </li>
+          <li class="item_menu">
+            <a href="equipe.html">
+              <span class="icon"><i class="bi bi-people"></i></span>
+              <span class="txt_menu">Grupo</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-            // Configuração do Bluetooth (RX, TX)
-            SoftwareSerial BTSerial(2, 3);  // RX no pino 2, TX no pino 3
+    <main class="main_code">
+      <h1>C O L D W H E E L S</h1>
+      <div>
+        <h2>CODIGO PRINCIPAL</h2>
+
+        <section class="code">
+          <pre>
+          #include SoftwareSerial.h
+
+          // Configuração do Bluetooth (RX, TX)
+          SoftwareSerial BTSerial(2, 3);  // RX no pino 2, TX no pino 3
+          
+          // Pinos dos motores (ponte H L298N)
+          #define IN1 8   // Motor direito - frente
+          #define IN2 9   // Motor direito - ré
+          #define IN3 10  // Motor esquerdo - frente
+          #define IN4 11  // Motor esquerdo - ré
+  // Variáveis de estado
+          char movementState = 'W';
+          
+          void setup() {
+            // Configura os pinos dos motores como saída
+            pinMode(IN1, OUTPUT);
+            pinMode(IN2, OUTPUT);
+            pinMode(IN3, OUTPUT);
+            pinMode(IN4, OUTPUT);
             
-            // Pinos dos motores (ponte H L298N)
-            #define IN1 8   // Motor direito - frente
-            #define IN2 9   // Motor direito - ré
-            #define IN3 10  // Motor esquerdo - frente
-            #define IN4 11  // Motor esquerdo - ré
+          
+            // Inicia a comunicação serial para debug
+            Serial.begin(9600);
             
-            // Pinos dos acessórios
-            #define light_FR A0  // Farol direito dianteiro
-            #define light_FL A1  // Farol esquerdo dianteiro
-            #define light_BR A2  // Lanterna direita traseira
-            #define light_BL A3  // Lanterna esquerda traseira
-            #define horn_Buzz A4 // Buzina
+            // Inicia a comunicação Bluetooth
+            BTSerial.begin(9600);
+            Serial.println("Sistema iniciado. Aguardando comandos Bluetooth...");
             
-            // Variáveis de estado
-            char movementState = 'S';  // S = Stop, F = Frente, B = Trás, L = Esquerda, R = Direita
-            bool lightFront = false;    // Faróis dianteiros ligados?
-            bool lightBack = false;     // Lanternas traseiras ligadas?
-            bool horn = false;          // Buzina ligada?
-            
-            void setup() {
-              // Configura os pinos dos motores como saída
-              pinMode(IN1, OUTPUT);
-              pinMode(IN2, OUTPUT);
-              pinMode(IN3, OUTPUT);
-              pinMode(IN4, OUTPUT);
-              
-              // Configura os pinos dos acessórios como saída
-              pinMode(light_FR, OUTPUT);
-              pinMode(light_FL, OUTPUT);
-              pinMode(light_BR, OUTPUT);
-              pinMode(light_BL, OUTPUT);
-              pinMode(horn_Buzz, OUTPUT);
-            
-              // Inicia a comunicação serial para debug
-              Serial.begin(9600);
-              
-              // Inicia a comunicação Bluetooth
-              BTSerial.begin(9600);
-              Serial.println("Sistema iniciado. Aguardando comandos Bluetooth...");
-              
-              // Garante que os motores começam parados
-              Stop();
+            // Garante que os motores começam parados
+ Stop();
+          }
+          
+          // Funções de movimento
+          void forward() {
+            digitalWrite(IN1, HIGH);
+            digitalWrite(IN2, LOW);
+            digitalWrite(IN3, HIGH);
+            digitalWrite(IN4, LOW);
+            Serial.println("Movendo para frente");
+          }
+          
+          void back() {
+            digitalWrite(IN1, LOW);
+            digitalWrite(IN2, HIGH);
+            digitalWrite(IN3, LOW);
+            digitalWrite(IN4, HIGH);
+            Serial.println("Movendo para trás");
+          }
+          
+          void left() {
+            digitalWrite(IN1, LOW);
+            digitalWrite(IN2, HIGH);
+            digitalWrite(IN3, HIGH);
+            digitalWrite(IN4, LOW);
+            Serial.println("Virando à esquerda");
+          }
+          
+          void right() {
+            digitalWrite(IN1, HIGH);
+ digitalWrite(IN2, LOW);
+            digitalWrite(IN3, LOW);
+            digitalWrite(IN4, HIGH);
+            Serial.println("Virando à direita");
+          }
+          
+          void Stop() {
+            digitalWrite(IN1, LOW);
+            digitalWrite(IN2, LOW);
+            digitalWrite(IN3, LOW);
+            digitalWrite(IN4, LOW);
+            static char lastState = '\0';
+            if (lastState != 'W') {
+              Serial.println("Parado");
+              lastState = 'W';
             }
-            
-            // Funções de movimento
-            void forward() {
-              digitalWrite(IN1, HIGH);
-              digitalWrite(IN2, LOW);
-              digitalWrite(IN3, HIGH);
-              digitalWrite(IN4, LOW);
-              Serial.println("Movendo para frente");
-            }
-            
-            void back() {
-              digitalWrite(IN1, LOW);
-              digitalWrite(IN2, HIGH);
-              digitalWrite(IN3, LOW);
-              digitalWrite(IN4, HIGH);
-              Serial.println("Movendo para trás");
-            }
-            
-            void left() {
-              digitalWrite(IN1, LOW);
-              digitalWrite(IN2, HIGH);
-              digitalWrite(IN3, HIGH);
-              digitalWrite(IN4, LOW);
-              Serial.println("Virando à esquerda");
-            }
-            
-            void right() {
-              digitalWrite(IN1, HIGH);
-              digitalWrite(IN2, LOW);
-              digitalWrite(IN3, LOW);
-              digitalWrite(IN4, HIGH);
-              Serial.println("Virando à direita");
-            }
-            
-            void Stop() {
-              digitalWrite(IN1, LOW);
-              digitalWrite(IN2, LOW);
-              digitalWrite(IN3, LOW);
-              digitalWrite(IN4, LOW);
-              static char lastState = '\0';
-              if (lastState != 'W') {
-                Serial.println("Parado");
-                lastState = 'W';
+          }
+          
+          // Função para controlar a buzina
+          void controlHorn(bool state) {
+            digitalWrite(horn_Buzz, state);
+            horn = state;
+            Serial.println(state ? "Buzina LIGADA" : "Buzina DESLIGADA");
+          }
+          
+          void loop() {
+            // Comunicação Bluetooth
+            if (BTSerial.available() > 0) {
+              char command = (char)BTSerial.read();
+              Serial.print("Comando recebido: ");
+              Serial.println(command);
+ // Processa o comando recebido
+              switch (command) {
+                // Comandos de movimento
+                case 'B': 
+                  movementState = 'B'; 
+                  forward();
+                  break;
+                case 'F': 
+                  movementState = 'F'; 
+                  back();
+                  break;
+                case 'R': 
+                  movementState = 'R'; 
+                  left();
+                  break;
+                case 'L': 
+                  movementState = 'L'; 
+                  right();
+                  break;
+                case 'W': 
+                  movementState = 'W'; 
+                  Stop();
+                  break;
+                
+          
+                default:
+                  Serial.print("Comando desconhecido: ");
+                  Serial.println(command);
               }
             }
-            
-            // Função para controlar faróis dianteiros
-            void controlFrontLights(bool state) {
-              digitalWrite(light_FR, state);
-              digitalWrite(light_FL, state);
-              lightFront = state;
-              Serial.println(state ? "Faróis dianteiros LIGADOS" : "Faróis dianteiros DESLIGADOS");
-            }
-            
-            // Função para controlar lanternas traseiras
-            void controlBackLights(bool state) {
-              digitalWrite(light_BR, state);
-              digitalWrite(light_BL, state);
-              lightBack = state;
-              Serial.println(state ? "Lanternas traseiras LIGADAS" : "Lanternas traseiras DESLIGADAS");
-            }
-            
-            // Função para controlar a buzina
-            void controlHorn(bool state) {
-              digitalWrite(horn_Buzz, state);
-              horn = state;
-              Serial.println(state ? "Buzina LIGADA" : "Buzina DESLIGADA");
-            }
-            
-            void loop() {
-              // Comunicação Bluetooth
-              if (BTSerial.available() > 0) {
-                char command = (char)BTSerial.read();
-                Serial.print("Comando recebido: ");
-                Serial.println(command);
-            
-                // Processa o comando recebido
-                switch (command) {
-                  // Comandos de movimento
-                  case 'B': 
-                    movementState = 'B'; 
-                    forward();
-                    break;
-                  case 'F': 
-                    movementState = 'F'; 
-                    back();
-                    break;
-                  case 'R': 
-                    movementState = 'R'; 
-                    left();
-                    break;
-                  case 'L': 
-                    movementState = 'L'; 
-                    right();
-                    break;
-                  case 'W': 
-                    movementState = 'W'; 
-                    Stop();
-                    break;
-            
-                  // Comandos dos faróis dianteiros
-                  case 'U': controlFrontLights(true); break;
-                  case 'u': controlFrontLights(false); break;
-            
-                  // Comandos das lanternas traseiras
-                  case 'V': controlBackLights(true); break;
-                  case 'v': controlBackLights(false); break;
-            
-                  
-            
-                  default:
-                    Serial.print("Comando desconhecido: ");
-                    Serial.println(command);
-                }
-              }
-            
-              // Pequeno delay para evitar sobrecarga
-              delay(10);
-            }
-            </pre
-        >
-      </section>
-
-      <section>
-        <h2>Download</h2>
-        <p>
+ // Pequeno delay para evitar sobrecarga
+            delay(10);
+          }</pre
+          >
+        </section>
+      </div>
+      <div id="div2">
+        <section>
+          <h2>Download</h2>
           <button onclick="pg_load">Baixar projeto completo (.zip)</button>
-        </p>
-      </section>
+        </section>
 
-      <section>
-        <h2>Desafios e Soluções</h2>
-        <h3>Principal desafio:</h3>
-        <p>Fazer o Bluetooth funcionar corretamente com o Arduino.</p>
+        <section id="desafios">
+          <h2>Desafios e Soluções</h2>
+          <h3>Principal desafio:</h3>
+          <p>Fazer o Bluetooth funcionar corretamente com o Arduino.</p>
 
-        <h3>Lições aprendidas:</h3>
-        <p>Aprendemos a mexer com Arduino e codificar o básico de C++.</p>
-      </section>
+          <h3>Lições aprendidas:</h3>
+          <p>Aprendemos a mexer com Arduino e codificar o básico de C++.</p>
+        </section>
+      </div>
     </main>
 
     <footer>
@@ -242,5 +202,6 @@
         Computação
       </p>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>
