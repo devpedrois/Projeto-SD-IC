@@ -251,6 +251,7 @@ main > #div2 > #desafios > h3 {
 }
 .comp-subtitulo {
   font-weight: 400;
+  margin-bottom: 15px;
 }
 
 .montagem-btn {
@@ -262,4 +263,9 @@ main > #div2 > #desafios > h3 {
   margin-top: 20px;
   margin-left: 10px;
   margin-bottom: 20px;
+}
+.montagem-btn:hover {
+  padding: 17px;
+  background-color: #111391;
+  transition: 0.5s;
 }
