@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ColdWheels - Equipe</title>
-    <link rel="stylesheet" href="./estilos/estilos.css" />
+    <link rel="stylesheet" href="estilos/estilos.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
@@ -12,8 +12,10 @@
   </head>
   <body>
     <header>
-      <nav class="menu_lateral">
-        <div class="menu_expansive"><i class="bi bi-list"></i></div>
+      <nav class="menu_lateral" id="sidebar">
+        <div class="menu_expansive" id="menuBtn">
+          <i class="bi bi-list"></i>
+        </div>
 
         <ul>
           <li class="item_menu">
@@ -46,53 +48,77 @@
 
     <main>
       <h1>ColdWheels</h1>
-      <p>Carrinho controlado via Bluetooth</p>
+      <p class="comp-subtitulo">Carrinho controlado via Bluetooth</p>
 
       <section>
         <h2>Integrantes</h2>
 
-        <article>
-          <h3>Diogo</h3>
-          <img src="imagens/diogo.jpg" alt="Foto do Diogo" width="150" />
-          <p>Responsável pela montagem</p>
-          <p>
-            <a href="https://github.com/ildevdio">GitHub</a> |
-            <a href="#">LinkedIn</a>
-          </p>
-        </article>
+        <div class="integrantes-container">
+          <article class="integrante-card">
+            <img
+              src="imagens/diogo.jpg"
+              alt="Foto do Diogo"
+              class="integrante-img"
+            />
+            <h3>Diogo</h3>
+            <p>Responsável pela montagem</p>
+            <div class="integrante-links">
+              <a href="https://github.com/ildevdio"
+                ><i class="bi bi-github"></i> GitHub</a
+              >
+              <a href="#"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            </div>
+          </article>
 
-        <article>
-          <h3>Nicolas</h3>
-          <img src="imagens/nicolas.jpg" alt="Foto do Nicolas" width="150" />
-          <p>Responsável pela programação</p>
-          <p>
-            <a href="https://github.com/Nicolasnat">GitHub</a> |
-            <a href="#">LinkedIn</a>
-          </p>
-        </article>
+          <article class="integrante-card">
+            <img
+              src="imagens/nicolas.jpg"
+              alt="Foto do Nicolas"
+              class="integrante-img"
+            />
+            <h3>Nicolas</h3>
+            <p>Responsável pela programação</p>
+            <div class="integrante-links">
+              <a href="https://github.com/Nicolasnat"
+                ><i class="bi bi-github"></i> GitHub</a
+              >
+              <a href="#"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            </div>
+          </article>
 
-        <article>
-          <h3>Rafael</h3>
-          <img src="imagens/rafael.jpg" alt="Foto do Rafael" width="150" />
-          <p>Responsável pela documentação</p>
-          <p>
-            <a href="https://github.com/rafaeldosantos169">GitHub</a> |
-            <a href="#">LinkedIn</a>
-          </p>
-        </article>
+          <article class="integrante-card">
+            <img
+              src="imagens/rafael.jpg"
+              alt="Foto do Rafael"
+              class="integrante-img"
+            />
+            <h3>Rafael</h3>
+            <p>Responsável pela documentação</p>
+            <div class="integrante-links">
+              <a href="https://github.com/rafaeldosantos169"
+                ><i class="bi bi-github"></i> GitHub</a
+              >
+              <a href="#"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            </div>
+          </article>
 
-        <article>
-          <h3>Pedro</h3>
-          <img src="imagens/pedro.jpg" alt="Foto do Pedro" width="150" />
-          <p>Responsável pelos testes</p>
-          <p>
-            <a href="https://github.com/devpedrois">GitHub</a> |
-            <a href="#">LinkedIn</a>
-          </p>
-        </article>
+          <article class="integrante-card">
+            <img
+              src="imagens/pedro.jpg"
+              alt="Foto do Pedro"
+              class="integrante-img"
+            />
+            <h3>Pedro</h3>
+            <p>Responsável pelos testes</p>
+            <div class="integrante-links">
+              <a href="https://github.com/devpedrois"
+                ><i class="bi bi-github"></i> GitHub</a
+              >
+              <a href="#"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            </div>
+          </article>
+        </div>
       </section>
-
-      
     </main>
 
     <footer>
@@ -101,5 +127,6 @@
         Computação
       </p>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>
