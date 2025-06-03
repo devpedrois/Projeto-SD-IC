@@ -8,6 +8,7 @@
     --cor_secundary: #060A51;
     --cor_tres: #E8DEF8;
     --cor_quatro: #B8B2B2;
+    --cor_cinco : #0a64b4;
 }
 body{
     height: 100vh;
@@ -19,13 +20,13 @@ nav.menu_lateral {
     width: 60px;
     height: 100%;
     background-color: var(--cor_primary);
-    padding: 40px 0 40px 10px;
+    padding: 0px 0 0px 10px;
     box-shadow: 3px 0 0 var(--cor_tres);
     overflow: hidden;
 
     position: relative;
     top: 0;
-    left: 0;
+left: 0;
     transition: width 0.3s ease;
   }
   
@@ -42,6 +43,7 @@ nav.menu_lateral:not(.expandido) .txt_menu {
 .menu_expansive {
     width: 35px;
     padding-left: 10px;
+    margin-top: 1rem;
   }
 .menu_expansive:hover{
     background: var(--cor_tres);
@@ -58,7 +60,6 @@ ul{
     list-style: none;
     
 }
-
 .item_menu > a{
     color: var(--cor_secundary);
     text-decoration: none;
@@ -106,7 +107,7 @@ main > #section1 > div > h3{
 }
 
 main > #section1 > div > p{
-    font-size: 22px;
+    font-size: 20px;
     margin: 10px;
 }
 main > #section1 > div{
@@ -116,7 +117,7 @@ main > #section1 > div{
 }
 
 footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100vw;
     height: 3rem;
@@ -133,7 +134,7 @@ main > #section2 > ul{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 50px;
+    margin: 32px;
 }
 
 main > #section2 > ul > a > li{
@@ -157,4 +158,59 @@ main > #section2 > ul > a {
 }
 main > #section2 > ul > a > li:hover{
     padding: 30px;
+}
+main > div > .code{
+    width: 600px;
+    height: 300px;
+    overflow: scroll;
+    overflow-x: hidden;
+    background: var(--cor_quatro);
+    scrollbar-color: var(--cor_secundary) var(--cor_quatro);
+    border-radius: 20px;
+    transition: 0.6s ease;
+}
+main > div >.code:hover{
+    padding: 10px;
+}
+
+main >div> h2{
+    font-size: 30px;
+    margin: 10px;
+}
+.main_code{
+    display: flex;
+    flex-direction: column;   
+}
+
+main > #div2{
+    margin-top: 20px;
+    display: flex;
+    gap: 10rem;
+    justify-content: space-around;
+}
+
+main > #div2 > h2{
+    font-size: 32px;
+}
+
+main > div > section >button{
+    height: 50px;
+    border-radius: 10px;
+    padding: 0px 5px 0 5px;
+    color: var(--cor_primary);
+ background-color: var(--cor_cinco);
+    border: none;
+    cursor: pointer;
+    transition: 0.5s  ease
+}
+main > div > section > button:hover{
+    padding: 10px;
+    background-color: var(--cor_secundary);
+}
+
+main > #div2 > #desafios > p{
+    font-size: 18px;
+}
+main > #div2 > #desafios > h3{
+    margin: 5px 0 5px 0;
 }
