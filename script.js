@@ -6,7 +6,6 @@
     sidebar.classList.toggle("expandido");
   };
 
-  //lalala
   document.getElementById("download-btn").addEventListener("click", function download() {
       const link = document.createElement("a");
       link.href = "https://drive.google.com/file/d/1o6fTtGe7TerOn6wKzoirMDVpbqZCZQLG/view?usp=sharing";
